@@ -4,6 +4,7 @@
 https://www.udemy.com/course/50-projects-50-days
 
 ## TODO
+- [ ] Day 0 - Initial setup & project starter
 - [ ] Day 1 - Expanding Cards
 - [ ] Day 2 - Progress Steps
 - [ ] Day 3 - Rotating Navigation
