@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 50vw;
+}
+
+.panel {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  overflow: hidden;
+  margin: 0 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  transition: flex 700ms ease-in-out;
+}
+
+.panel-a {
+  background-image: url("./images/maldives-1993704_1280.jpg");
+}
+
+.panel-b {
+  background-image: url("./images/pier-569314_1280.jpg");
+}
+
+.panel-c {
+  background-image: url("./images/sea-164989_1280.jpg");
+}
+
+.panel-d {
+  background-image: url("./images/snow-4682266_1280.jpg");
+}
+
+.panel-e {
+  background-image: url("./images/maldives-3220702_1280.jpg");
+}
+
+.panel h3 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  font-size: 24px;
+  opacity: 0;
+  transition: opacity 700ms 400ms;
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
