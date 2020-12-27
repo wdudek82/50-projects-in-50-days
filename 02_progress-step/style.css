@@ -69,6 +69,8 @@ body {
   background-color: #fff;
   opacity: 1;
   transition: 400ms ease;
+  cursor: pointer;
+  user-select: none;
 }
 
 .circle.active {

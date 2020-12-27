@@ -1,51 +1,57 @@
-const steps = document.querySelectorAll(".circle");
+const progress = document.getElementById("progress");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
-const progress = document.getElementById("progress");
+const circles = document.querySelectorAll(".circle");
 
-const lastStepIndex = 4;
-let currentStepIndex = -1;
+let currentActive = 0;
+
+circles.forEach((circle, index) => {
+  circle.addEventListener("click", () => onStepClicked(index));
+});
+
+prevBtn.addEventListener("click", () => {
+  currentActive -= 1;
+  updateProgress();
+});
+
+nextBtn.addEventListener("click", () => {
+  currentActive += 1;
+  updateProgress();
+});
+
+function onStepClicked(index) {
+  currentActive = index;
+  updateProgress();
+}
+
+function updateProgress() {
+  markSteps();
+  toggleDisabledBtn();
+}
 
 function markSteps() {
-  steps.forEach((s, index) => {
-    s.classList.add("active");
-
-    if (index <= currentStepIndex) {
-      s.classList.add("active");
+  console.log(currentActive, circles.length);
+  progress.style.width = `${(currentActive / (circles.length - 1)) * 100}%`;
+  circles.forEach((circle, index) => {
+    if (index <= currentActive) {
+      circle.classList.add("active");
     } else {
-      s.classList.remove("active");
+      circle.classList.remove("active");
     }
   });
 }
 
-markSteps();
-
-prevBtn.addEventListener("click", () => {
-  currentStepIndex -= 1;
-  progress.style.width = `${25 * currentStepIndex}%`;
-  markSteps();
-
-  console.log(currentStepIndex);
-
-  if (currentStepIndex < 0) {
+function toggleDisabledBtn() {
+  if (currentActive < 1) {
     prevBtn.disabled = true;
-  } else {
-    prevBtn.disabled = false;
     nextBtn.disabled = false;
-  }
-});
-
-nextBtn.addEventListener("click", () => {
-  currentStepIndex += 1;
-  progress.style.width = `${25 * currentStepIndex}%`;
-  markSteps();
-
-  console.log(currentStepIndex);
-
-  if (currentStepIndex > lastStepIndex-1) {
+  } else if (currentActive >= circles.length - 1) {
+    prevBtn.disabled = false;
     nextBtn.disabled = true;
   } else {
     prevBtn.disabled = false;
     nextBtn.disabled = false;
   }
-});
+}
+
+updateProgress();
