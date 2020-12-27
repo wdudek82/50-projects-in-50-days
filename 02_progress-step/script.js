@@ -30,7 +30,6 @@ function updateProgress() {
 }
 
 function markSteps() {
-  console.log(currentActive, circles.length);
   progress.style.width = `${(currentActive / (circles.length - 1)) * 100}%`;
   circles.forEach((circle, index) => {
     if (index <= currentActive) {
