@@ -41,16 +41,16 @@ function markSteps() {
 }
 
 function toggleDisabledBtn() {
+  let isPrevBtnDisabled = false;
+  let isNextBtnDisabled = false;
+
   if (currentActive < 1) {
-    prevBtn.disabled = true;
-    nextBtn.disabled = false;
+    isPrevBtnDisabled = true;
   } else if (currentActive >= circles.length - 1) {
-    prevBtn.disabled = false;
-    nextBtn.disabled = true;
-  } else {
-    prevBtn.disabled = false;
-    nextBtn.disabled = false;
+    isNextBtnDisabled = true;
   }
+  prevBtn.disabled = isPrevBtnDisabled;
+  nextBtn.disabled = isNextBtnDisabled;
 }
 
 updateProgress();
